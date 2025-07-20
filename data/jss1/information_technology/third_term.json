@@ -1,0 +1,204 @@
+[
+  {
+    "question": "Which of these is an input device?",
+    "options": ["Monitor", "Printer", "Keyboard", "Speaker"],
+    "answer": "Keyboard"
+  },
+  {
+    "question": "Which type of computer is designed for a single user and is small enough to fit on a desk?",
+    "options": ["Supercomputer", "Mainframe", "Desktop computer", "Server"],
+    "answer": "Desktop computer"
+  },
+  {
+    "question": "What is a common use of computers in education?",
+    "options": ["Playing loud music", "Learning online", "Washing clothes", "Cooking food"],
+    "answer": "Learning online"
+  },
+  {
+    "question": "Which of these is a disadvantage of using computers?",
+    "options": ["Fast processing", "Access to information", "Eye strain", "Improved communication"],
+    "answer": "Eye strain"
+  },
+  {
+    "question": "What key is used to start a new paragraph in a word document?",
+    "options": ["Shift", "Ctrl", "Enter", "Alt"],
+    "answer": "Enter"
+  },
+  {
+    "question": "What action involves quickly pressing and releasing the left mouse button twice?",
+    "options": ["Clicking", "Dragging", "Double-clicking", "Right-clicking"],
+    "answer": "Double-clicking"
+  },
+  {
+    "question": "Which of these devices displays images and text on a screen?",
+    "options": ["Scanner", "Microphone", "Monitor", "Mouse"],
+    "answer": "Monitor"
+  },
+  {
+    "question": "A laptop computer is also known as a:",
+    "options": ["Desktop", "Tablet", "Portable computer", "Supercomputer"],
+    "answer": "Portable computer"
+  },
+  {
+    "question": "Which application allows you to watch videos and play games on a computer?",
+    "options": ["Word Processor", "Spreadsheet", "Multimedia player", "Antivirus"],
+    "answer": "Multimedia player"
+  },
+  {
+    "question": "What is a potential security risk when using computers connected to the internet?",
+    "options": ["Increased efficiency", "Virus infection", "Data backup", "Online collaboration"],
+    "answer": "Virus infection"
+  }
+  {
+    "question": "Which component is known as the 'brain' of the computer?",
+    "options": ["RAM", "Hard Drive", "CPU", "Motherboard"],
+    "answer": "CPU"
+  },
+  {
+    "question": "What kind of computer is typically used by scientists for very complex calculations?",
+    "options": ["Laptop", "Smartphone", "Supercomputer", "Desktop"],
+    "answer": "Supercomputer"
+  },
+  {
+    "question": "Computers are used in hospitals for what purpose?",
+    "options": ["Playing music for patients", "Managing patient records", "Washing hospital linens", "Cooking food for staff"],
+    "answer": "Managing patient records"
+  },
+  {
+    "question": "One disadvantage of overusing computers is that it can lead to a lack of physical activity. What is this also known as?",
+    "options": ["Active lifestyle", "Sedentary lifestyle", "Healthy habits", "Outdoor activities"],
+    "answer": "Sedentary lifestyle"
+  },
+  {
+    "question": "What key on the keyboard is used to erase characters to the left of the cursor?",
+    "options": ["Delete", "Enter", "Backspace", "Spacebar"],
+    "answer": "Backspace"
+  },
+  {
+    "question": "What is the action of moving an item on the screen by holding down the mouse button and sliding the mouse?",
+    "options": ["Clicking", "Dragging", "Scrolling", "Hovering"],
+    "answer": "Dragging"
+  },
+  {
+    "question": "Which of these is a storage device?",
+    "options": ["Printer", "Speaker", "USB Flash Drive", "Microphone"],
+    "answer": "USB Flash Drive"
+  },
+  {
+    "question": "Which type of computer is small enough to fit in your pocket and is used for making calls and Browse the internet?",
+    "options": ["Desktop computer", "Mainframe", "Tablet", "Smartphone"],
+    "answer": "Smartphone"
+  },
+  {
+    "question": "In what area are computers used to help design buildings and bridges?",
+    "options": ["Agriculture", "Construction and Engineering", "Farming", "Cooking"],
+    "answer": "Construction and Engineering"
+  },
+  {
+    "question": "A disadvantage of using computers is the risk of losing important information if there is a power outage and no backup. What is this risk called?",
+    "options": ["Data recovery", "Data loss", "Data security", "Data storage"],
+    "answer": "Data loss"
+  }
+  {
+    "question": "What is the main purpose of an operating system?",
+    "options": ["To play games", "To manage computer hardware and software resources", "To create documents", "To browse the internet"],
+    "answer": "To manage computer hardware and software resources"
+  },
+  {
+    "question": "Which of these is a portable computer that uses a touchscreen as its primary input method?",
+    "options": ["Desktop computer", "Server", "Tablet", "Workstation"],
+    "answer": "Tablet"
+  },
+  {
+    "question": "How are computers commonly used in banking?",
+    "options": ["For cooking meals", "For managing customer accounts and transactions", "For building houses", "For farming crops"],
+    "answer": "For managing customer accounts and transactions"
+  },
+  {
+    "question": "What is a disadvantage of relying too much on computers for communication?",
+    "options": ["Faster message delivery", "Reduced face-to-face interaction", "Easy sharing of information", "Access to global networks"],
+    "answer": "Reduced face-to-face interaction"
+  },
+  {
+    "question": "To type in ALL CAPS, which key on the keyboard should be pressed?",
+    "options": ["Shift", "Ctrl", "Caps Lock", "Tab"],
+    "answer": "Caps Lock"
+  },
+  {
+    "question": "What is the term for pointing to an item on the screen with the mouse without clicking?",
+    "options": ["Dragging", "Scrolling", "Hovering", "Double-clicking"],
+    "answer": "Hovering"
+  },
+  {
+    "question": "Which device is used to scan documents and convert them into digital files?",
+    "options": ["Printer", "Scanner", "Monitor", "Keyboard"],
+    "answer": "Scanner"
+  },
+  {
+    "question": "What kind of computer is a powerful, high-end machine used for complex tasks like graphic design or scientific research?",
+    "options": ["Netbook", "Smartphone", "Workstation", "Personal Digital Assistant (PDA)"],
+    "answer": "Workstation"
+  },
+  {
+    "question": "In what industry are computers crucial for designing products and creating marketing materials?",
+    "options": ["Fishing", "Manufacturing and Marketing", "Logging", "Shepherdry"],
+    "answer": "Manufacturing and Marketing"
+  },
+  {
+    "question": "A disadvantage of computer use is exposure to inappropriate content, especially for young users. What is a common way to prevent this?",
+    "options": ["Unlimited internet access", "Parental controls", "Sharing passwords", "Ignoring warning messages"],
+    "answer": "Parental controls"
+  }
+  {
+    "question": "Which part of the computer holds data temporarily while the computer is running?",
+    "options": ["Hard Disk Drive", "CD-ROM", "RAM", "ROM"],
+    "answer": "RAM"
+  },
+  {
+    "question": "What is a large, powerful computer used by many users simultaneously in a big organization?",
+    "options": ["Microcomputer", "Minicomputer", "Mainframe computer", "Laptop"],
+    "answer": "Mainframe computer"
+  },
+  {
+    "question": "Computers are used in traffic control systems for what purpose?",
+    "options": ["To play music for drivers", "To manage traffic flow and signals", "To wash cars", "To sell tickets"],
+    "answer": "To manage traffic flow and signals"
+  },
+  {
+    "question": "A disadvantage of computers is the potential for cyberbullying and online harassment. What does this relate to?",
+    "options": ["Improved communication", "Increased social interaction", "Online safety and ethics", "Faster data processing"],
+    "answer": "Online safety and ethics"
+  },
+  {
+    "question": "Which key is commonly used to cancel an operation or close a dialog box?",
+    "options": ["Enter", "Esc", "Tab", "Shift"],
+    "answer": "Esc"
+  },
+  {
+    "question": "What is the action of pressing and quickly releasing the left mouse button once?",
+    "options": ["Double-clicking", "Right-clicking", "Clicking (or Single-clicking)", "Dragging"],
+    "answer": "Clicking (or Single-clicking)"
+  },
+  {
+    "question": "Which device produces a paper copy of what is shown on the computer screen?",
+    "options": ["Monitor", "Printer", "Speaker", "Projector"],
+    "answer": "Printer"
+  },
+  {
+    "question": "Which type of computer is designed for specialized applications and usually found in embedded systems?",
+    "options": ["General-purpose computer", "Dedicated computer", "Desktop computer", "Laptop"],
+    "answer": "Dedicated computer"
+  },
+  {
+    "question": "How are computers used in the field of medicine, besides patient records?",
+    "options": ["For cooking food", "For diagnosing diseases and performing surgeries", "For driving ambulances", "For cleaning hospital floors"],
+    "answer": "For diagnosing diseases and performing surgeries"
+  },
+  {
+    "question": "One disadvantage of computers is that they can be expensive to purchase and maintain. What does this relate to?",
+    "options": ["Cost-effectiveness", "Portability", "Economic impact", "Speed of operation"],
+    "answer": "Economic impact"
+  }
+]
+
+
