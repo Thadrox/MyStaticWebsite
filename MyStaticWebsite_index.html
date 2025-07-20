@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[Your Name]'s Tech School</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <img src="images/duke_logo.png" alt="Duke University Logo" class="duke-logo">
+        <h1>Welcome to [Your Name]'s Tech School</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="courses.html">Courses & Quiz</a></li>
+            <li><a href="books.html">Books & Resources</a></li>
+            <li><a href="schools.html">CBT Practice</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero-section">
+        <div class="hero-content">
+            <h2>Unlock Your Potential in Technology!</h2>
+            <p>Master coding, web development, and more with our interactive courses and practical exercises. Your future in tech starts here.</p>
+            <a href="courses.html" class="button hero-button">Explore Courses</a>
+        </div>
+    </section>
+
+    <div class="container">
+        <section id="about-us" class="card fade-in">
+            <h2>About Our Vision</h2>
+            <p>At [Your Name]'s Tech School, we believe in empowering the next generation with essential tech skills. Our curriculum is designed to be hands-on, engaging, and relevant to today's digital world. Whether you're a beginner or looking to deepen your knowledge, we have something for everyone.</p>
+            <a href="about.html" class="button">Learn More About Us</a>
+        </section>
+
+        <section id="featured-courses" class="card fade-in">
+            <h2>Featured Learning Paths</h2>
+            <div class="course-grid">
+                <div class="course-item">
+                    <h3>Web Development Basics</h3>
+                    <p>Start your journey with HTML, CSS, and JavaScript. Build responsive and beautiful websites.</p>
+                </div>
+                <div class="course-item">
+                    <h3>Python Programming</h3>
+                    <p>Dive into Python for data science, automation, and software development.</p>
+                </div>
+                <div class="course-item">
+                    <h3>CBT Practice Exams</h3>
+                    <p>Prepare for your exams with our comprehensive Computer-Based Test practice modules.</p>
+                </div>
+            </div>
+            <a href="courses.html" class="button">View All Courses</a>
+        </section>
+
+        <section id="cta" class="cta-section fade-in">
+            <h2>Ready to Transform Your Future?</h2>
+            <p>Join hundreds of students who are already excelling with our innovative teaching methods.</p>
+            <a href="contact.html" class="button cta-button">Get Started Today!</a>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 [Your Name]. Powered by Knowledge.</p>
+    </footer>
+    <script src="js/main.js"></script>
+    <script>
+        // Simple fade-in animation for cards
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.card, .cta-section');
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.classList.add('is-visible');
+                }, index * 100); // Stagger the animation
+            });
+        });
+    </script>
+</body>
+</html>

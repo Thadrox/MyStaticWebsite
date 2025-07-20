@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[Your Name] - Books & Resources</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <img src="images/duke_logo.png" alt="Duke University Logo" class="duke-logo">
+        <h1>Books & Resources</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="courses.html">Courses & Quiz</a></li>
+            <li><a href="books.html">Books & Resources</a></li>
+            <li><a href="schools.html">CBT Practice</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <section class="card">
+            <h2>Recommended Learning Materials</h2>
+            <p>Here you'll find a curated list of books, online courses, and other resources to further your learning journey in technology. We constantly update this section with the best and most relevant materials.</p>
+
+            <div class="resource-grid">
+                <div class="resource-item">
+                    <h3>HTML & CSS: Design and Build Websites</h3>
+                    <p>By Jon Duckett</p>
+                    <p>An excellent visual guide for beginners to learn the fundamentals of web design.</p>
+                    <a href="#" class="button small-button">Learn More</a>
+                </div>
+                <div class="resource-item">
+                    <h3>Python Crash Course</h3>
+                    <p>By Eric Matthes</p>
+                    <p>A fast-paced, thorough introduction to programming with Python.</p>
+                    <a href="#" class="button small-button">Learn More</a>
+                </div>
+                <div class="resource-item">
+                    <h3>JavaScript & jQuery: Interactive Front-End Development</h3>
+                    <p>By Jon Duckett</p>
+                    <p>Another visually stunning book to master client-side scripting for interactive web pages.</p>
+                    <a href="#" class="button small-button">Learn More</a>
+                </div>
+                <div class="resource-item">
+                    <h3>Online Course: FreeCodeCamp</h3>
+                    <p>Comprehensive free online courses for web development.</p>
+                    <a href="https://www.freecodecamp.org/" target="_blank" class="button small-button">Visit Site</a>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 30px;">
+                *Note: Some links may be external resources. We recommend checking them regularly for updates.
+            </p>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 [Your Name]. Powered by Knowledge.</p>
+    </footer>
+    <script src="js/main.js"></script>
+    <style>
+        /* Specific styles for books.html, can be added to style.css if preferred */
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .resource-item {
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            background-color: #fcfcfc;
+        }
+        .resource-item h3 {
+            color: #2c3e50;
+            margin-top: 0;
+        }
+        .resource-item p {
+            font-size: 0.9em;
+            color: #666;
+        }
+        .small-button {
+            padding: 8px 15px;
+            font-size: 0.9em;
+        }
+    </style>
+</body>
+</html>

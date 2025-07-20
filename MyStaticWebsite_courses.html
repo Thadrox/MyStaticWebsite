@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[Your Name] - Courses & Quiz</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <img src="images/duke_logo.png" alt="Duke University Logo" class="duke-logo">
+        <h1>Our Courses & Quiz</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="courses.html">Courses & Quiz</a></li>
+            <li><a href="books.html">Books & Resources</a></li>
+            <li><a href="schools.html">CBT Practice</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <section class="card">
+            <h2>Explore Our Learning Paths</h2>
+            <p>We offer a diverse range of courses designed to equip you with practical skills and in-depth knowledge in various tech domains. Our courses are structured to be engaging and practical, preparing you for real-world challenges.</p>
+
+            <div class="course-listing-grid">
+                <div class="course-card">
+                    <h3>Introduction to Web Development</h3>
+                    <p>Learn the basics of creating websites using HTML, CSS, and an introduction to JavaScript. Perfect for beginners!</p>
+                    <ul>
+                        <li>HTML Structure</li>
+                        <li>CSS Styling</li>
+                        <li>Responsive Design Basics</li>
+                    </ul>
+                    <a href="termly_exam.html" class="button">Take Web Dev Quiz</a>
+                </div>
+                <div class="course-card">
+                    <h3>Python for Beginners</h3>
+                    <p>A comprehensive course covering Python fundamentals, data structures, and basic scripting.</p>
+                    <ul>
+                        <li>Variables & Data Types</li>
+                        <li>Control Flow (If/Else, Loops)</li>
+                        <li>Functions</li>
+                    </ul>
+                    <a href="termly_exam.html" class="button">Take Python Quiz</a>
+                </div>
+                <div class="course-card">
+                    <h3>Advanced JavaScript Techniques</h3>
+                    <p>Dive deeper into JavaScript with topics like DOM manipulation, ES6 features, and asynchronous programming.</p>
+                    <ul>
+                        <li>ES6 Features</li>
+                        <li>Asynchronous JS</li>
+                        <li>APIs & Fetch</li>
+                    </ul>
+                    <a href="termly_exam.html" class="button">Take JS Quiz</a>
+                </div>
+                <div class="course-card">
+                    <h3>Computer-Based Test (CBT) Prep</h3>
+                    <p>Practice for various exams with our CBT simulation tools and question banks.</p>
+                    <ul>
+                        <li>Timed Practice Sessions</li>
+                        <li>Review Mode</li>
+                        <li>Performance Analytics</li>
+                    </ul>
+                    <a href="schools.html" class="button">Go to CBT Practice</a>
+                </div>
+            </div>
+
+            <h2 style="margin-top: 50px;">Ready to Test Your Knowledge?</h2>
+            <p style="text-align: center;">Our Termly Exam allows you to assess your understanding across different subjects and classes.</p>
+            <div style="text-align: center;">
+                <a href="termly_exam.html" class="button hero-button">Start Termly Exam</a>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 [Your Name]. Powered by Knowledge.</p>
+    </footer>
+    <script src="js/main.js"></script>
+    <style>
+        /* Specific styles for courses.html, can be added to style.css if preferred */
+        .course-listing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+            margin-bottom: 40px;
+        }
+        .course-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 25px;
+            background-color: #fcfcfc;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            transition: transform 0.2s ease;
+        }
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+        }
+        .course-card h3 {
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 1.6em;
+        }
+        .course-card ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 20px;
+        }
+        .course-card ul li {
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="%232ecc71"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>') no-repeat left center;
+            background-size: 16px;
+            padding-left: 25px;
+            margin-bottom: 8px;
+            color: #555;
+            font-size: 0.95em;
+        }
+        .course-card .button {
+            display: block;
+            width: fit-content;
+            margin: 0 auto;
+            padding: 10px 20px;
+            font-size: 1em;
+        }
+    </style>
+</body>
+</html>
