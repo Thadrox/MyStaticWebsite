@@ -1,0 +1,482 @@
+/* General Body Styles */
+body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7f6; /* Light gray background */
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Header Styles */
+header {
+    background-color: #2c3e50; /* Dark blue-gray */
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden; /* For logo positioning */
+}
+
+.duke-logo {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 60px; /* Adjust as needed */
+    width: auto;
+    border-radius: 50%; /* Make it round */
+    border: 2px solid #fff;
+}
+
+header h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5em;
+    margin: 0;
+    padding-left: 100px; /* Space for the logo */
+}
+
+/* Navigation Styles */
+nav {
+    background-color: #34495e; /* Slightly lighter dark blue-gray */
+    padding: 10px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+    background-color: #e74c3c; /* Red highlight on hover/active */
+    color: #fff;
+}
+
+/* Section Styling */
+section {
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+section h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2em;
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 25px;
+    position: relative;
+}
+
+section h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: #e74c3c;
+    margin: 10px auto 0;
+}
+
+/* Button Styles */
+.button {
+    display: inline-block;
+    background-color: #2ecc71; /* Green */
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-align: center;
+}
+
+.button:hover {
+    background-color: #27ae60; /* Darker green on hover */
+    transform: translateY(-2px);
+}
+
+/* Form Group Styles */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #555;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group select,
+.form-group textarea {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1em;
+    box-sizing: border-box; /* Include padding in width */
+    margin-top: 5px;
+}
+
+.form-group textarea {
+    resize: vertical; /* Allow vertical resizing */
+}
+
+/* Quiz Specific Styles */
+.quiz-container {
+    padding: 30px;
+}
+
+.quiz-timer {
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #e74c3c; /* Red timer */
+}
+
+.quiz-question {
+    font-size: 1.3em;
+    margin-bottom: 20px;
+    font-weight: 600;
+    color: #444;
+}
+
+.quiz-options label {
+    display: block;
+    background-color: #f0f0f0;
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    border: 1px solid #e0e0e0;
+}
+
+.quiz-options label:hover {
+    background-color: #e6e6e6;
+}
+
+.quiz-options input[type="radio"] {
+    margin-right: 10px;
+    transform: scale(1.2);
+}
+
+.quiz-navigation {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.quiz-navigation button {
+    margin: 0 10px;
+}
+
+/* Exam Result Section */
+#exam-result {
+    text-align: center;
+}
+
+#answers-review {
+    text-align: left;
+    margin-top: 30px;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+
+#answers-review p {
+    background-color: #f9f9f9;
+    border: 1px solid #eee;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #34495e;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 30px;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* --- New Styles for Homepage "Spice" --- */
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('../images/hero-bg.jpg') no-repeat center center/cover; /* Add a placeholder image or create one */
+    color: #fff;
+    padding: 80px 20px;
+    text-align: center;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.hero-content h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3.5em;
+    margin-bottom: 20px;
+    line-height: 1.2;
+    color: #fff; /* Override default section h2 color */
+}
+
+.hero-content h2::after {
+    background-color: #2ecc71; /* Green underline for hero title */
+}
+
+.hero-content p {
+    font-size: 1.3em;
+    max-width: 800px;
+    margin: 0 auto 30px;
+    line-height: 1.5;
+}
+
+.hero-button {
+    background-color: #2ecc71;
+    font-size: 1.2em;
+    padding: 15px 30px;
+}
+
+.hero-button:hover {
+    background-color: #27ae60;
+}
+
+/* Card Styles */
+.card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    padding: 30px;
+    margin-bottom: 30px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Course Grid */
+.course-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.course-item {
+    background-color: #f8f8f8;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: background-color 0.3s ease;
+}
+
+.course-item:hover {
+    background-color: #eef;
+}
+
+.course-item h3 {
+    font-family: 'Montserrat', sans-serif;
+    color: #34495e;
+    font-size: 1.5em;
+    margin-top: 0;
+}
+
+.course-item p {
+    font-size: 0.95em;
+    color: #666;
+}
+
+/* Call to Action Section */
+.cta-section {
+    background-color: #e74c3c; /* Red */
+    color: #fff;
+    padding: 60px 20px;
+    text-align: center;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.cta-section h2 {
+    color: #fff; /* Override default section h2 color */
+}
+
+.cta-section h2::after {
+    background-color: #fff; /* White underline for CTA title */
+}
+
+.cta-section p {
+    font-size: 1.2em;
+    max-width: 700px;
+    margin: 0 auto 30px;
+}
+
+.cta-button {
+    background-color: #2c3e50; /* Dark blue-gray */
+    font-size: 1.1em;
+    padding: 12px 25px;
+}
+
+.cta-button:hover {
+    background-color: #34495e; /* Lighter dark blue-gray */
+}
+
+/* Contact Page Specific Styles */
+.contact-section {
+    padding: 30px;
+}
+
+.contact-methods {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+    margin-bottom: 40px;
+}
+
+.contact-item {
+    background-color: #f8f8f8;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.contact-item h3 {
+    font-family: 'Montserrat', sans-serif;
+    color: #34495e;
+    font-size: 1.4em;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.contact-item .contact-button {
+    display: block;
+    margin: 15px auto 10px;
+    width: 80%;
+}
+
+.contact-item .contact-info {
+    font-size: 0.9em;
+    color: #777;
+}
+
+.contact-form-section {
+    border-top: 1px solid #eee;
+    padding-top: 30px;
+    margin-top: 30px;
+}
+
+/* Animations */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2em;
+        padding-left: 0; /* Remove padding for smaller screens if logo is not absolute */
+    }
+
+    .duke-logo {
+        position: static; /* Stack logo above title or adjust positioning */
+        transform: none;
+        margin-bottom: 10px;
+    }
+
+    nav ul {
+        flex-direction: column;
+    }
+
+    nav ul li {
+        margin: 5px 0;
+    }
+
+    .hero-content h2 {
+        font-size: 2.5em;
+    }
+
+    .hero-content p {
+        font-size: 1.1em;
+    }
+
+    .contact-methods {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.8em;
+    }
+
+    .container {
+        padding: 10px;
+    }
+
+    .button {
+        padding: 8px 15px;
+        font-size: 0.9em;
+    }
+
+    .hero-section {
+        padding: 50px 15px;
+    }
+
+    .hero-content h2 {
+        font-size: 2em;
+    }
+
+    .hero-content p {
+        font-size: 1em;
+    }
+}
