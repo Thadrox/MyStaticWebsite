@@ -85,6 +85,93 @@
     "answer": "USB Flash Drive"
   },
   {
+[
+  {
+    "question": "Which of these is an input device?",
+    "options": ["Monitor", "Printer", "Keyboard", "Speaker"],
+    "answer": "Keyboard"
+  },
+  {
+    "question": "Which type of computer is designed for a single user and is small enough to fit on a desk?",
+    "options": ["Supercomputer", "Mainframe", "Desktop computer", "Server"],
+    "answer": "Desktop computer"
+  },
+  {
+    "question": "What is a common use of computers in education?",
+    "options": ["Playing loud music", "Learning online", "Washing clothes", "Cooking food"],
+    "answer": "Learning online"
+  },
+  {
+    "question": "Which of these is a disadvantage of using computers?",
+    "options": ["Fast processing", "Access to information", "Eye strain", "Improved communication"],
+    "answer": "Eye strain"
+  },
+  {
+    "question": "What key is used to start a new paragraph in a word document?",
+    "options": ["Shift", "Ctrl", "Enter", "Alt"],
+    "answer": "Enter"
+  },
+  {
+    "question": "What action involves quickly pressing and releasing the left mouse button twice?",
+    "options": ["Clicking", "Dragging", "Double-clicking", "Right-clicking"],
+    "answer": "Double-clicking"
+  },
+  {
+    "question": "Which of these devices displays images and text on a screen?",
+    "options": ["Scanner", "Microphone", "Monitor", "Mouse"],
+    "answer": "Monitor"
+  },
+  {
+    "question": "A laptop computer is also known as a:",
+    "options": ["Desktop", "Tablet", "Portable computer", "Supercomputer"],
+    "answer": "Portable computer"
+  },
+  {
+    "question": "Which application allows you to watch videos and play games on a computer?",
+    "options": ["Word Processor", "Spreadsheet", "Multimedia player", "Antivirus"],
+    "answer": "Multimedia player"
+  },
+  {
+    "question": "What is a potential security risk when using computers connected to the internet?",
+    "options": ["Increased efficiency", "Virus infection", "Data backup", "Online collaboration"],
+    "answer": "Virus infection"
+  },
+  {
+    "question": "Which component is known as the 'brain' of the computer?",
+    "options": ["RAM", "Hard Drive", "CPU", "Motherboard"],
+    "answer": "CPU"
+  },
+  {
+    "question": "What kind of computer is typically used by scientists for very complex calculations?",
+    "options": ["Laptop", "Smartphone", "Supercomputer", "Desktop"],
+    "answer": "Supercomputer"
+  },
+  {
+    "question": "Computers are used in hospitals for what purpose?",
+    "options": ["Playing music for patients", "Managing patient records", "Washing hospital linens", "Cooking food for staff"],
+    "answer": "Managing patient records"
+  },
+  {
+    "question": "One disadvantage of overusing computers is that it can lead to a lack of physical activity. What is this also known as?",
+    "options": ["Active lifestyle", "Sedentary lifestyle", "Healthy habits", "Outdoor activities"],
+    "answer": "Sedentary lifestyle"
+  },
+  {
+    "question": "What key on the keyboard is used to erase characters to the left of the cursor?",
+    "options": ["Delete", "Enter", "Backspace", "Spacebar"],
+    "answer": "Backspace"
+  },
+  {
+    "question": "What is the action of moving an item on the screen by holding down the mouse button and sliding the mouse?",
+    "options": ["Clicking", "Dragging", "Scrolling", "Hovering"],
+    "answer": "Dragging"
+  },
+  {
+    "question": "Which of these is a storage device?",
+    "options": ["Printer", "Speaker", "USB Flash Drive", "Microphone"],
+    "answer": "USB Flash Drive"
+  },
+  {
     "question": "Which type of computer is small enough to fit in your pocket and is used for making calls and Browse the internet?",
     "options": ["Desktop computer", "Mainframe", "Tablet", "Smartphone"],
     "answer": "Smartphone"
@@ -200,5 +287,3 @@
     "answer": "Economic impact"
   }
 ]
-
-
