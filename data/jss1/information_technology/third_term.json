@@ -48,7 +48,7 @@
     "question": "What is a potential security risk when using computers connected to the internet?",
     "options": ["Increased efficiency", "Virus infection", "Data backup", "Online collaboration"],
     "answer": "Virus infection"
-  }
+  },
   {
     "question": "Which component is known as the 'brain' of the computer?",
     "options": ["RAM", "Hard Drive", "CPU", "Motherboard"],
@@ -98,7 +98,7 @@
     "question": "A disadvantage of using computers is the risk of losing important information if there is a power outage and no backup. What is this risk called?",
     "options": ["Data recovery", "Data loss", "Data security", "Data storage"],
     "answer": "Data loss"
-  }
+  },
   {
     "question": "What is the main purpose of an operating system?",
     "options": ["To play games", "To manage computer hardware and software resources", "To create documents", "To browse the internet"],
@@ -148,7 +148,7 @@
     "question": "A disadvantage of computer use is exposure to inappropriate content, especially for young users. What is a common way to prevent this?",
     "options": ["Unlimited internet access", "Parental controls", "Sharing passwords", "Ignoring warning messages"],
     "answer": "Parental controls"
-  }
+  },
   {
     "question": "Which part of the computer holds data temporarily while the computer is running?",
     "options": ["Hard Disk Drive", "CD-ROM", "RAM", "ROM"],
