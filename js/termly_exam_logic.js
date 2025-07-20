@@ -126,6 +126,7 @@ async function loadQuestionsForExam(studentClass, examSubject, examTerm) {
 
     // Construct the file path relative to your site's root
     const filePath = `data/${classPath}/${subjectPath}/${termPath}.json`;
+console.log("Attempting to fetch from path:", filePath);
 
     try {
         const response = await fetch(filePath);
