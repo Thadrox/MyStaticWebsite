@@ -1,0 +1,2 @@
+# MyStaticWebsite
+Student Web.
