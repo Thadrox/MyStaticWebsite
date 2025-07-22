@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Duke CBT Exam</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="https://raw.githubusercontent.com/Thadrox/dukecbt/main/logo.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* CSS Variables for easy theme customization */
+    :root {
+      --primary-color: #4CAF50; /* A fresh green */
+      --primary-hover: #45a049;
+      --secondary-color: #607D8B; /* Grey-blue for secondary elements */
+      --secondary-hover: #546E7A;
+      --background-light: #e0f2f7; /* Light blue background */
+      --background-card: #ffffff; /* White card background */
+      --text-dark: #333333;
+      --text-light: #666666;
+      --border-light: #e0e0e0;
+      --shadow-light: rgba(0, 0, 0, 0.1);
+      --success-color: #28a745;
+      --warning-color: #ffc107;
+      --danger-color: #dc3545;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--background-light);
+      margin: 0;
+      padding: 20px;
+      color: var(--text-dark);
+      display: flex;
+      flex-direction: column; /* Changed to column to stack containers */
+      justify-content: flex-start; /* Align to the top */
+      align-items: center; /* Center horizontally */
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 700px;
+      width: 100%;
+      margin: 20px auto;
+      background: var(--background-card);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 25px var(--shadow-light);
+      text-align: center;
+      box-sizing: border-box;
+    }
+    img.logo {
+      max-width: 150px;
+      margin-bottom: 25px;
+      border-radius: 8px;
+    }
+    h1 {
+      font-size: 2.2em;
+      color: var(--primary-color);
+      margin-bottom: 15px;
+      font-weight: 700;
+    }
+    h2 {
+      font-size: 1.8em;
+      color: var(--text-dark);
+      margin-top: 0;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+    h3 {
+      font-size: 1.4em;
+      color: var(--text-light);
+      margin-bottom: 25px;
+      font-weight: 500;
+    }
+    input[type="text"], select {
+      width: calc(100% - 24px);
+      padding: 12px;
+      margin: 10px 0 20px;
+      border: 1px solid var(--border-light);
+      border-radius: 8px;
+      font-size: 1.1rem;
+      color: var(--text-dark);
+      background-color: var(--background-light);
+      box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    input[type="text"]:focus, select:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+      outline: none;
+    }
+    button {
+      padding: 14px 25px;
+      background-color: var(--primary-color);
+      color: white;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 15px;
+      width: 100%;
+      max-width: 350px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    button:hover {
+      background-color: var(--primary-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    }
+    button:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    button#submitEarlyBtn {
+      background-color: var(--success-color);
+    }
+    button#submitEarlyBtn:hover {
+      background-color: #218838;
+    }
+    button#goBackBtn, button.secondary-btn {
+      background-color: var(--secondary-color);
+    }
+    button#goBackBtn:hover, button.secondary-btn:hover {
+      background-color: var(--secondary-hover);
+    }
+
+    iframe {
+      width: 100%;
+      height: 600px;
+      border: 1px solid var(--border-light);
+      border-radius: 8px;
+      margin-top: 25px;
+      display: none;
+      box-shadow: inset 0 0 5px rgba(0,0,0,0.05);
+    }
+    #timer {
+      font-size: 1.6em;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: var(--primary-color);
+      padding: 8px 15px;
+      background: var(--background-light);
+      border-radius: 5px;
+      display: inline-block;
+      min-width: 150px;
+    }
+    #timer.warning {
+      color: var(--warning-color);
+      background: #fff3cd;
+    }
+    #timer.timeup {
+      color: var(--danger-color);
+      background: #f8d7da;
+    }
+    label {
+      font-weight: 600;
+      display: block;
+      text-align: left;
+      margin-top: 20px;
+      margin-bottom: 8px;
+      color: var(--text-dark);
+    }
+    #landingPage, #namePage, #selectionPage, #quizPage, #timesUpPage {
+      display: none;
+    }
+    /* Set landingPage as initial active page */
+    #landingPage {
+      display: block;
+    }
+    #messageArea {
+      font-weight: 600;
+      color: var(--danger-color);
+      margin: 20px 0;
+      background: #ffe0e6;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid var(--danger-color);
+    }
+    #savedResults {
+      margin-top: 20px;
+      background: var(--background-light);
+      padding: 15px;
+      border-radius: 8px;
+      border: 1px solid var(--border-light);
+      text-align: left;
+      max-height: 250px;
+      overflow-y: auto;
+    }
+    #savedResults ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    #savedResults li {
+      padding: 10px 0;
+      border-bottom: 1px dashed var(--border-light);
+      font-size: 0.95em;
+      color: var(--text-light);
+    }
+    #savedResults li:last-child {
+      border-bottom: none;
+    }
+    #savedResults li strong {
+      color: var(--text-dark);
+    }
+
+    /* Message for actions */
+    #actionMessage {
+        display: none; /* Hidden by default */
+        text-align: center;
+        padding: 10px;
+        margin: 15px auto;
+        border-radius: 5px;
+        font-weight: 500;
+        max-width: 600px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    #actionMessage.success {
+        background-color: var(--success-color);
+        color: white;
+    }
+    #actionMessage.error {
+        background-color: var(--danger-color);
+        color: white;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      body {
+        padding: 15px;
+      }
+      .container {
+        padding: 20px;
+        margin: 15px auto;
+      }
+      h1 { font-size: 1.8em; }
+      h2 { font-size: 1.5em; }
+      h3 { font-size: 1.2em; }
+      input[type="text"], select, button {
+        font-size: 1em;
+        padding: 10px;
+      }
+      button {
+        max-width: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container" id="landingPage">
+  <img class="logo" src="https://raw.githubusercontent.com/Thadrox/dukecbt/main/logo.png" alt="Duke CBT Logo" />
+  <h1>Welcome to Duke CBT System</h1>
+  <button id="landingStartBtn">Click to Start</button>
+</div>
+
+<div class="container" id="namePage">
+  <h2>Please Enter Your Full Name</h2>
+  <input type="text" id="studentNameInput" placeholder="Enter your full name" />
+  <button id="nameNextBtn">Next</button>
+</div>
+
+<div class="container" id="selectionPage">
+  <h2>Hello, <span id="displayStudentName"></span>!</h2>
+  <h3>Select Term, Subject & Class to Begin</h3>
+
+  <label for="classSelect">Class:</label>
+  <select id="classSelect">
+    <option value="">-- Select Class --</option>
+    <option value="JSS1">JSS1</option>
+    <option value="JSS2">JSS2</option>
+    <option value="JSS3">JSS3</option>
+  </select>
+
+  <label for="subjectSelect">Subject:</label>
+  <select id="subjectSelect">
+    <option value="">-- Select Subject --</option>
+    <option value="agric">Agricultural Science</option>
+    <option value="homeecons">Home Economics</option>
+    <option value="computer">Computer Studies</option>
+  </select>
+
+  <label for="termSelect">Term:</label>
+  <select id="termSelect">
+    <option value="">-- Select Term --</option>
+    <option value="first">First Term</option>
+    <option value="second">Second Term</option>
+    <option value="third">Third Term</option>
+  </select>
+
+  <button id="startQuizBtn">Start Quiz</button>
+</div>
+
+<div class="container" id="quizPage">
+  <div id="timer">Time Remaining: --:--</div>
+  <h3>Good luck, <span id="displayName"></span>!</h3>
+  <p id="messageArea"></p>
+  <iframe id="quizFrame" src="" allow="clipboard-read; clipboard-write"></iframe>
+  <button id="submitEarlyBtn" onclick="submitEarly()">✅ I Have Submitted</button>
+  <button id="goBackBtn" style="display: none;">⏪ Go Back</button>
+</div>
+
+<div class="container" id="timesUpPage">
+  <h2>⏰ Time's Up!</h2>
+  <p>Please submit your answers if you haven't already.</p>
+  <button onclick="restartQuiz()">Restart Quiz for Next Student</button>
+</div>
+
+<div id="actionMessage" class="container" style="display: none; margin-top:15px; margin-bottom: 0;"></div>
+
+<div class="container" style="margin-top:25px;">
+  <h2>📘 Saved Quiz Records</h2>
+  <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 20px;">
+    <button onclick="showSavedResults()" class="secondary-btn" style="flex: 1 1 200px; max-width: 200px;">📊 View All Results</button>
+    <button onclick="downloadResults()" class="secondary-btn" style="flex: 1 1 200px; max-width: 200px;">📥 Download Results</button>
+    <button onclick="clearResults()" class="secondary-btn" style="flex: 1 1 200px; max-width: 200px;">🗑️ Clear Results</button>
+  </div>
+  <div id="savedResults">
+    <p style='text-align: center; color: var(--text-light);'>Click 'View All Results' to see records.</p>
+  </div>
+</div>
+
+<script>
+const allowedNames = [
+  "Precious Duke", "Chinedu Okafor", "Adaobi Nwosu", "Ngozi Chukwu", "Samuel Eze",
+  "Duke", "Miracle", "Eze Cherish", "Odinaka Chizitere", "Nwakaire Chizitere",
+  "Covenant", "Tochukwu Delight", "Nwakaire Nnamdi"
+];
+
+// IMPORTANT: Update these links to your actual hosted quiz HTML files
+const quizLinks = {
+  'jss1_agric_first': 'https://thadrox.github.io/pastein_jss1firstterm.html',
+  'jss1_homeecons_first': 'https://your-link-here.com/jss1/homeecons_first.html',
+  'jss1_computer_first': 'https://your-link-here.com/jss1/computer_first.html',
+  
+  // JSS 1 SECOND TERM CBT EXAMS
+  'jss1_agric_second': 'https://your-link-here.com/jss1/agric_second.html',
+  'jss1_homeecons_second': 'https://your-link-here.com/jss1/homeecons_second.html',
+  'jss1_computer_second': 'https://your-link-here.com/jss1/computer_second.html',
+  
+  // Jss 1 THIRD TERM CBT EXAMS
+  'jss1_agric_third': 'https://thadrox.github.io/dukecbt/agricthirdtermquiz.html',
+  'jss1_homeecons_third': 'https://thadrox.github.io/dukecbt/homeeconscbtthirdtermjss1.html', // This one should contain your 40 questions!
+  'jss1_computer_third': 'https://thadrox.github.io/school/info.html',
+  
+  // JSS 2 CBT EXAMS
+  // JSS 2 FIRST TERM CBT EXAM
+  'jss2_agric_first': 'https://your-link-here.com/jss2/agric_first.html',
+  'jss2_homeecons_first': 'https://your-link-here.com/jss2/homeecons_first.html',
+  'jss2_computer_first': 'https://your-link-here.com/jss2/computer_first.html',
+  
+  // JSS 2 SECOND TERM CBT EXAM
+  'jss2_agric_second': 'https://your-link-here.com/jss2/agric_second.html',
+  'jss2_homeecons_second': 'https://your-link-here.com/jss2/homeecons_second.html',
+  'jss2_computer_second': 'https://your-link-here.com/jss2/computer_second.html',
+  
+  // JSS 2 THIRD TERM CBT EXAM
+  'jss2_agric_third': 'https://thadrox.github.io/dukecbt/agricthirdtermquiz.html',
+  'jss2_homeecons_third': 'https://thadrox.github.io/dukecbt/homeeconomicsjss3thirdtermcbt.html', // Note: Original was JSS3, check if this is correct for JSS2
+  'jss2_computer_third': 'https://thadrox.github.io/school/infor.html',
+
+  // JSS 3 CBT EXAMS (Add more as needed)
+  'jss3_homeecons_third': 'https://thadrox.github.io/dukecbt/homeeconomicsjss3thirdtermcbt.html' // Example for JSS3
+};
+
+// Quiz times in MINUTES
+const quizTimes = {
+  'jss1_agric_first': 45,
+  'jss1_homeecons_first': 40,
+  'jss1_computer_first': 35,
+  'jss1_agric_third': 105,
+  'jss1_homeecons_third': 60, // 60 minutes for the 40-question Home Economics
+  'jss2_agric_third': 105,
+  'jss2_homeecons_third': 60, // Assuming 60 minutes for JSS2 Home Economics as well
+  'jss3_homeecons_third': 60, // Assuming 60 minutes for JSS3 Home Economics
+  'jss2_computer_third': 105,
+  'jss1_computer_third': 105
+};
+
+let countdownInterval;
+let currentStudentName = "";
+let selectedClass = "";
+let selectedSubject = "";
+let selectedTerm = "";
+let quizStartTimeStamp = 0; // To record when the quiz iframe actually loads
+
+// --- DOM Element References ---
+const landingPage = document.getElementById("landingPage");
+const namePage = document.getElementById("namePage");
+const selectionPage = document.getElementById("selectionPage");
+const quizPage = document.getElementById("quizPage");
+const timesUpPage = document.getElementById("timesUpPage");
+
+const studentNameInput = document.getElementById("studentNameInput");
+const displayStudentName = document.getElementById("displayStudentName");
+const displayName = document.getElementById("displayName");
+const classSelect = document.getElementById("classSelect");
+const subjectSelect = document.getElementById("subjectSelect");
+const termSelect = document.getElementById("termSelect");
+const quizFrame = document.getElementById("quizFrame");
+const timerEl = document.getElementById("timer");
+const messageArea = document.getElementById("messageArea");
+const goBackBtn = document.getElementById("goBackBtn");
+
+const savedResultsDiv = document.getElementById("savedResults");
+const actionMessageDiv = document.getElementById('actionMessage'); // New message div
+
+// --- Helper for temporary messages ---
+function showActionMessage(message, type = 'success', duration = 3000) {
+    actionMessageDiv.textContent = message;
+    actionMessageDiv.className = 'container'; // Reset classes
+    actionMessageDiv.classList.add(type);
+    actionMessageDiv.style.display = 'block';
+    setTimeout(() => {
+        actionMessageDiv.style.display = 'none';
+    }, duration);
+}
+
+// --- Page Navigation Functions ---
+function showPage(pageId) {
+  const pages = [landingPage, namePage, selectionPage, quizPage, timesUpPage];
+  pages.forEach(page => page.style.display = 'none');
+  document.getElementById(pageId).style.display = 'block';
+  // Hide any lingering action messages when changing main pages
+  actionMessageDiv.style.display = 'none';
+}
+
+// --- Timer Functions ---
+function startTimer(minutes) {
+  let timeLeft = minutes * 60;
+  timerEl.classList.remove("warning", "timeup");
+
+  countdownInterval = setInterval(() => {
+    const mins = Math.floor(timeLeft / 60);
+    const secs = timeLeft % 60;
+    timerEl.textContent = `Time Remaining: ${mins.toString().padStart(2,'0')}:${secs.toString().padStart(2,'0')}`;
+
+    if (timeLeft <= 60 && timeLeft > 0) { // Warning at 1 minute (60 seconds)
+      timerEl.classList.add("warning");
+    } else if (timeLeft > 60) {
+      timerEl.classList.remove("warning");
+    }
+
+    if (timeLeft <= 0) {
+      clearInterval(countdownInterval);
+      timerEl.textContent = "Time's Up!";
+      timerEl.classList.remove("warning");
+      timerEl.classList.add("timeup");
+      endQuiz();
+    }
+    timeLeft--;
+  }, 1000);
+}
+
+function stopTimer() {
+  clearInterval(countdownInterval);
+}
+
+// --- Quiz Flow Functions ---
+document.getElementById("landingStartBtn").addEventListener("click", () => {
+  showPage("namePage");
+  studentNameInput.focus();
+});
+
+document.getElementById("nameNextBtn").addEventListener("click", () => {
+  const nameInput = studentNameInput.value.trim();
+  if (!nameInput) {
+    showActionMessage("Please enter your full name to proceed.", 'error');
+    return;
+  }
+  const allowedLower = allowedNames.map(n => n.toLowerCase());
+  if (!allowedLower.includes(nameInput.toLowerCase())) {
+    showActionMessage("Access Denied! Your name is not on the approved student list.", 'error', 5000);
+    return;
+  }
+  currentStudentName = nameInput;
+  displayStudentName.textContent = currentStudentName;
+  showPage("selectionPage");
+});
+
+document.getElementById("startQuizBtn").addEventListener("click", () => {
+  selectedClass = classSelect.value.toLowerCase();
+  selectedSubject = subjectSelect.value.toLowerCase();
+  selectedTerm = termSelect.value.toLowerCase();
+
+  if (!selectedClass || !selectedSubject || !selectedTerm) {
+    showActionMessage("Please select class, subject, and term.", 'error');
+    return;
+  }
+
+  const key = `${selectedClass}_${selectedSubject}_${selectedTerm}`;
+  const formLink = quizLinks[key];
+  const quizTime = quizTimes[key]; // This time is in minutes
+
+  if (!formLink || typeof quizTime === 'undefined' || formLink.includes("your-link-here")) {
+    quizFrame.style.display = "none";
+    timerEl.style.display = "none";
+    goBackBtn.style.display = "block";
+    messageArea.innerText = "❌ Sorry, this test has not been uploaded yet or time is not set. Please check back later.";
+    showPage("quizPage"); // Show quiz page with error message
+    return;
+  }
+
+  displayName.textContent = currentStudentName; // Student's name on quiz page
+  quizFrame.src = formLink;
+  quizFrame.style.display = "block";
+  messageArea.innerText = ""; // Clear any previous messages
+  timerEl.style.display = "block";
+  goBackBtn.style.display = "none"; // Hide go back button during active quiz
+
+  // Set quiz start timestamp once iframe finishes loading
+  quizFrame.onload = () => {
+    quizStartTimeStamp = Date.now();
+    startTimer(quizTime); // Start timer after iframe loads
+  };
+  
+  showPage("quizPage");
+});
+
+goBackBtn.addEventListener("click", () => {
+  showPage("selectionPage");
+  messageArea.innerText = ""; // Clear message
+});
+
+function submitEarly() {
+  stopTimer(); // Stop timer
+  saveResult(); // Save the current quiz info to localStorage
+  endQuiz();    // Proceed to Time’s Up page (or a custom results summary if implementing that)
+}
+
+function endQuiz() {
+  showPage("timesUpPage");
+}
+
+function restartQuiz() {
+  location.reload(); // Reloads the page, effectively restarting from the landing page
+}
+
+// --- Result Management Functions ---
+function toTitleCase(str) {
+  if (!str) return "";
+  return str.replace(/\w\S*/g, w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase());
+}
+
+function calculateTimeTaken() {
+  if (quizStartTimeStamp === 0) return "N/A"; // Quiz never started or was reloaded
+  const timeElapsedMillis = Date.now() - quizStartTimeStamp;
+  const totalSeconds = Math.floor(timeElapsedMillis / 1000);
+  const minutes = Math.floor(totalSeconds / 60);
+  const seconds = totalSeconds % 60;
+  return `${minutes} mins ${seconds} secs`;
+}
+
+function saveResult() {
+  const result = {
+    name: currentStudentName,
+    class: toTitleCase(selectedClass),
+    subject: toTitleCase(selectedSubject),
+    term: toTitleCase(selectedTerm),
+    timeTaken: calculateTimeTaken(),
+    timestamp: new Date().toLocaleString() // When the result was saved
+    // Note: Score from iframe cannot be directly captured here due to security.
+    // If you need score, the iframe quiz page must send it via postMessage to this parent.
+  };
+
+  if (!result.name || !result.class || !result.subject || !result.term) {
+      showActionMessage("Cannot save result: Missing student details or selections. Please ensure you entered your name and made all selections before starting.", 'error', 6000);
+      return;
+  }
+
+  try {
+      const results = JSON.parse(localStorage.getItem("quizResults") || "[]");
+      results.push(result);
+      localStorage.setItem("quizResults", JSON.stringify(results));
+      showActionMessage(`Result saved for ${result.name}.`, 'success');
+  } catch (e) {
+      console.error("Error saving result to localStorage:", e);
+      showActionMessage("Error saving result. Local storage might be full or corrupted.", 'error', 5000);
+  }
+}
+
+function showSavedResults() {
+  const results = JSON.parse(localStorage.getItem("quizResults") || "[]");
+
+  if (results.length === 0) {
+    savedResultsDiv.innerHTML = "<p style='text-align: center; color: var(--text-light);'>No quiz results found yet.</p>";
+    showActionMessage("No quiz results to display.", 'error');
+    return;
+  }
+
+  let html = "<ul>";
+  results.forEach((res, i) => {
+    html += `<li><strong>${i + 1}. ${toTitleCase(res.name)}</strong><br>` +
+            `Class: ${res.class || "N/A"} | Subject: ${res.subject || "N/A"} | Term: ${res.term || "N/A"}<br>` +
+            `Time Taken: ${res.timeTaken || "?"} | Submitted: ${res.timestamp || "N/A"}</li>`;
+  });
+  html += "</ul>";
+  savedResultsDiv.innerHTML = html;
+  showActionMessage("Results loaded successfully.", 'success');
+}
+
+function downloadResults() {
+  const results = JSON.parse(localStorage.getItem("quizResults") || "[]");
+  if (results.length === 0) {
+    showActionMessage("No results to download.", 'error');
+    return;
+  }
+
+  // Create CSV header and rows
+  const headers = "S/N,Name,Class,Subject,Term,Time Taken,Timestamp\n";
+  const csvRows = results.map((res, i) => {
+    // Ensure values are quoted to handle commas within fields
+    const name = `"${res.name ? res.name.replace(/"/g, '""') : ''}"`;
+    const cls = `"${res.class ? res.class.replace(/"/g, '""') : ''}"`;
+    const subject = `"${res.subject ? res.subject.replace(/"/g, '""') : ''}"`;
+    const term = `"${res.term ? res.term.replace(/"/g, '""') : ''}"`;
+    const timeTaken = `"${res.timeTaken ? res.timeTaken.replace(/"/g, '""') : ''}"`;
+    const timestamp = `"${res.timestamp ? res.timestamp.replace(/"/g, '""') : ''}"`;
+    return `${i + 1},${name},${cls},${subject},${term},${timeTaken},${timestamp}`;
+  });
+
+  const csvContent = headers + csvRows.join("\n");
+
+  try {
+      const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+
+      link.href = url;
+      link.download = "duke_cbt_results.csv";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+      showActionMessage("Results downloaded successfully!", 'success');
+  } catch (e) {
+      console.error("Error downloading results:", e);
+      showActionMessage("Error downloading results. Please try again.", 'error', 5000);
+  }
+}
+
+function clearResults() {
+  if (confirm("Are you sure you want to clear ALL saved quiz results? This action cannot be undone.")) {
+    try {
+        localStorage.removeItem("quizResults");
+        savedResultsDiv.innerHTML = "<p style='text-align: center; color: var(--text-light);'>No quiz results found yet.</p>";
+        showActionMessage("All results cleared successfully.", 'success');
+    } catch (e) {
+        console.error("Error clearing results from localStorage:", e);
+        showActionMessage("Error clearing results. Please try again.", 'error', 5000);
+    }
+  }
+}
+
+// --- Initial Setup ---
+document.addEventListener('DOMContentLoaded', () => {
+  showPage("landingPage"); // Default start page
+});
+</script>
+
+</body>
+</html>
