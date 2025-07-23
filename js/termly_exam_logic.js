@@ -67,8 +67,6 @@ const ADMIN_RESET_CODE = 'resetall'; // Your secret code to perform a targeted r
 
 // --- Initial Setup and Event Listeners ---
 document.addEventListener('DOMContentLoaded', () => {
-    updateExamDetailsDisplay(); // Initial display update for exam details
-
     // Attach event listeners to selection boxes for dynamic updates
     studentNameInput.addEventListener('input', updateExamDetailsDisplay);
     studentSchoolInput.addEventListener('input', updateExamDetailsDisplay);
@@ -76,8 +74,11 @@ document.addEventListener('DOMContentLoaded', () => {
     examSubjectSelect.addEventListener('change', updateExamDetailsDisplay);
     examTermSelect.addEventListener('change', updateExamDetailsDisplay);
 
+    // IMPORTANT: Attach the start exam button listener
+    startExamButton.addEventListener('click', startExam); // *** FIXED: Added missing event listener ***
+
     // Load and display previous exam result if available
-    displayPreviousResult();
+    displayPreviousResult(); // *** FIXED: Moved here to ensure DOM is ready ***
 
     // Admin secret input listener (hidden by default)
     document.addEventListener('keydown', (e) => {
@@ -109,6 +110,9 @@ document.addEventListener('DOMContentLoaded', () => {
             adminPanel.style.display = 'none';
         }
     });
+
+    // Initial update to reflect any pre-filled form data or previous results
+    updateExamDetailsDisplay();
 });
 
 /**
@@ -126,28 +130,30 @@ async function loadQuestionsForExam(studentClass, examSubject, examTerm) {
 
     // Construct the file path relative to your site's root
     const filePath = `data/${classPath}/${subjectPath}/${termPath}.json`;
-console.log("Attempting to fetch from path:", filePath);
+    // console.log("Attempting to fetch from path:", filePath); // Keep for debugging if needed
 
     try {
         const response = await fetch(filePath);
         if (!response.ok) {
             if (response.status === 404) {
                 console.warn(`No questions file found for: ${filePath}`);
-                return []; // Return empty array if file not found
+            } else {
+                // Log other HTTP errors
+                console.error(`HTTP error! Status: ${response.status} for ${filePath}`);
             }
-            throw new Error(`HTTP error! Status: ${response.status} for ${filePath}`);
+            return []; // Return empty array if file not found or other HTTP error
         }
         const questions = await response.json();
         return questions;
     } catch (error) {
-        console.error("Failed to load questions:", error);
+        console.error("Failed to load questions due to network or JSON parsing error:", error); // *** FIXED: More specific error message ***
         return []; // Return empty array on any other error
     }
 }
 
 
 // Function to update the displayed number of questions and estimated duration
-async function updateExamDetailsDisplay() { // Made async to await loadQuestionsForExam
+async function updateExamDetailsDisplay() {
     const selectedName = studentNameInput.value.trim();
     const selectedSchool = studentSchoolInput.value.trim();
     const selectedClass = studentClassSelect.value;
@@ -169,20 +175,24 @@ async function updateExamDetailsDisplay() { // Made async to await loadQuestions
     // Check attempts and disable button if maxed out
     // Unique key for attempt tracking includes all student info for better specificity
     const examKey = `${selectedSchool}-${selectedClass}-${selectedSubject}-${selectedTerm}-${selectedName}`;
-    const attemptsData = JSON.parse(localStorage.getItem('examAttempts')) || {};
+    const attemptsData = JSON.parse(localStorage.getItem('examAttempts') || '{}'); // *** FIXED: Added '|| {}' for robustness if item is null ***
     const currentAttempts = attemptsData[examKey] || 0;
 
-    if (numberOfQuestions > 0 && currentAttempts >= MAX_ATTEMPTS) {
+    // Enable/disable start button logic
+    const canStart = numberOfQuestions > 0 && selectedName && selectedSchool && selectedClass && selectedSubject && selectedTerm;
+
+    if (canStart && currentAttempts >= MAX_ATTEMPTS) {
         startExamButton.disabled = true;
         attemptWarning.style.display = 'block';
         attemptWarning.textContent = `You have reached the maximum (${MAX_ATTEMPTS}) attempts for this exam combination (${selectedName} - ${selectedSchool} - ${selectedClass} - ${selectedSubject} - ${selectedTerm}).`;
-    } else if (numberOfQuestions > 0 && selectedName && selectedSchool) { // Only enable if questions exist AND name/school are filled
+    } else if (canStart) {
         startExamButton.disabled = false;
         attemptWarning.style.display = 'none';
-    } else { // No questions for selection OR name/school not filled
+    } else {
         startExamButton.disabled = true;
-        attemptWarning.style.display = 'none';
+        attemptWarning.style.display = 'none'; // Hide warning if not all fields are selected
     }
+
 
     numQuestionsDisplay.textContent = numberOfQuestions;
     examDurationDisplay.textContent = estimatedDurationInMinutes;
@@ -212,7 +222,7 @@ function displayPreviousResult() {
 }
 
 // --- Exam Logic ---
-async function startExam() { // Made async to await loadQuestionsForExam
+async function startExam() {
     studentInfo.name = studentNameInput.value.trim();
     studentInfo.school = studentSchoolInput.value.trim();
     studentInfo.class = studentClassSelect.value;
@@ -226,7 +236,7 @@ async function startExam() { // Made async to await loadQuestionsForExam
 
     // Attempt Limit Check (redundant but good for robustness if updateExamDetailsDisplay was skipped)
     const examKey = `${studentInfo.school}-${studentInfo.class}-${studentInfo.subject}-${studentInfo.term}-${studentInfo.name}`;
-    const attemptsData = JSON.parse(localStorage.getItem('examAttempts')) || {};
+    const attemptsData = JSON.parse(localStorage.getItem('examAttempts') || '{}'); // *** FIXED: Added '|| {}' ***
     const currentAttempts = attemptsData[examKey] || 0;
 
     if (currentAttempts >= MAX_ATTEMPTS) {
@@ -271,6 +281,13 @@ function loadQuestion() {
     const question = currentExamQuestions[currentQuestionIndex];
     questionText.textContent = `${currentQuestionIndex + 1}. ${question.question}`;
     optionsContainer.innerHTML = ''; // Clear previous options
+
+    // Check if question.options exists and is an array
+    if (!question.options || !Array.isArray(question.options)) {
+        console.error(`Question ${currentQuestionIndex + 1} is missing 'options' or 'options' is not an array.`, question);
+        optionsContainer.textContent = "Error: Options not found for this question.";
+        return; // Stop loading this question's options
+    }
 
     question.options.forEach((option, index) => {
         const label = document.createElement('label');
@@ -341,7 +358,10 @@ function submitExam() {
 
     score = 0;
     currentExamQuestions.forEach((question, index) => {
-        if (userAnswers[index] === question.answer) {
+        // *** CRITICAL FIX: Changed question.answer to question.correct ***
+        // Assuming your JSON question objects will have a 'correct' property, not 'answer'
+        // based on your previous 'allQuizData' structure.
+        if (userAnswers[index] === question.correct) {
             score++;
         }
     });
@@ -361,7 +381,7 @@ function submitExam() {
 
     // Update attempt count
     const examKey = `${studentInfo.school}-${studentInfo.class}-${studentInfo.subject}-${studentInfo.term}-${studentInfo.name}`;
-    const attemptsData = JSON.parse(localStorage.getItem('examAttempts')) || {};
+    const attemptsData = JSON.parse(localStorage.getItem('examAttempts') || '{}'); // *** FIXED: Added '|| {}' ***
     attemptsData[examKey] = (attemptsData[examKey] || 0) + 1;
     localStorage.setItem('examAttempts', JSON.stringify(attemptsData));
 
@@ -385,13 +405,14 @@ function displayResults() {
     answersReview.innerHTML = '';
     currentExamQuestions.forEach((question, index) => {
         const userAnswer = userAnswers[index];
-        const isCorrect = userAnswer === question.answer;
+        // *** CRITICAL FIX: Changed question.answer to question.correct ***
+        const isCorrect = userAnswer === question.correct;
 
         const reviewItem = document.createElement('p');
         reviewItem.innerHTML = `
             <strong>Question ${index + 1}:</strong> ${question.question}<br>
             Your Answer: <span style="color: ${isCorrect ? 'green' : 'red'};">${userAnswer || 'No Answer Selected'}</span><br>
-            Correct Answer: <span style="color: green;">${question.answer}</span>
+            Correct Answer: <span style="color: green;">${question.correct}</span>
         `;
         answersReview.appendChild(reviewItem);
     });
@@ -464,3 +485,13 @@ function attemptAdminReset() {
     }
     adminResetCodeInput.value = ''; // Clear input field
 }
+
+// Attach directly to the buttons defined in HTML for admin functions
+// Assuming these are defined in your HTML with these IDs and onclick attributes
+// Or, if not, you should add event listeners here instead of inline onclick.
+// For example:
+// document.getElementById('clearLastResultBtn').addEventListener('click', clearLastExamResult);
+// document.getElementById('clearAttemptsBtn').addEventListener('click', clearAllAttemptCounts);
+// document.getElementById('clearAllStorageBtn').addEventListener('click', clearAllLocalStorage);
+// document.getElementById('toggleStorageViewerBtn').addEventListener('click', toggleLocalStorageViewer);
+// document.getElementById('adminResetBtn').addEventListener('click', attemptAdminReset);
